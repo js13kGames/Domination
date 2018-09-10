@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background: #2c2c2c;
+  color: #fff;
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+}
+h1 {
+  margin: 0;
+}
+h1:last-child {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+#g {
+  margin: auto;
+  position: relative;
+  display: none;
+}
+#gC {
+  transition: all .3s;
+}
+#i {
+  position: relative;
+  margin-bottom: 15px;
+}
+#p1, #p2 {
+  opacity: .25;
+}
+#s1, #s2 {
+  font-weight: normal;
+}
+.col {
+  float: left;
+}

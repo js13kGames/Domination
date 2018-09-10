@@ -1,0 +1,22 @@
+{
+  "name": "domination",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf dist/* && parcel build index.html",
+    "start": "parcel index.html"
+  },
+  "repository": "git+https://github.com/royyanbach/domination.git",
+  "keywords": [],
+  "author": "royyanbach <royyan.bachtiar@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/royyanbach/domination/issues"
+  },
+  "homepage": "https://github.com/royyanbach/domination#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.9.7",
+    "rimraf": "^2.6.2"
+  }
+}
