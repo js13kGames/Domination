@@ -1,7 +1,7 @@
 import { $ } from './utils';
 import Piece from './piece';
 
-const SIZE = 5;
+const SIZE = window.innerWidth <= 800 ? 8 : 20;
 const COLOR = ['LightGreen', 'Salmon', 'LightSkyBlue', 'CadetBlue', 'Khaki'];
 const BOARD_SIZE_PERCENTAGE = 0.6;
 

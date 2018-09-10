@@ -75,6 +75,6 @@ p, ol {
   background: #2c2c2c;
   border: 1px solid #fff;
   transition: opacity .5s ease;
-  opacity: 0;
-  z-index: -1;
+  opacity: 1;
+  z-index: 0;
 }

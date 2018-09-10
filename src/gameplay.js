@@ -19,10 +19,11 @@ class Gameplay {
   }
 
   showWinner() {
+    const draw = this.activePlayer.score === this.inactivePlayer.score;
     const winner = this.activePlayer.score >= this.inactivePlayer.score ?
                    this.activePlayer.name : this.inactivePlayer.name;
 
-    if (window.confirm(`Player ${winner} wins!. Start a new game?`)) {
+    if (window.confirm(`${draw ? 'It\'s a draw!' : 'Player ' + winner + 'wins!'}. Start a new game?`)) {
       window.location.reload();
     }
   }

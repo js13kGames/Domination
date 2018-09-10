@@ -1,0 +1,26 @@
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 15px;
+  }
+  #i {
+    margin-bottom: 5px;
+  }
+  #ctrl {
+    margin-top: 10px;
+  }
+  #ctrl a {
+    width: 100%;
+    text-decoration: initial;
+    font-size: 12px;
+  }
+  #modal {
+    padding: 20px;
+    font-size: 10px;
+  }
+  h3 {
+    margin-top: 0;
+  }
+  p, ol {
+    margin-bottom: 20px;
+  }
+}
