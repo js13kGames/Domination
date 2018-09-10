@@ -1,5 +1,6 @@
 class Player {
   constructor(el, scoreEl) {
+    this.name = el.id.toUpperCase();
     this.score = 0;
     this.scoreEl = scoreEl;
     this.el = el;
@@ -23,7 +24,7 @@ class Player {
 
   addPiece(newCoords, totalPieces) {
     this.coords = [...new Set([...this.coords, ...newCoords])];
-    this.score = Math.floor(this.coords.length / totalPieces * 100) || 0;
+    this.score = Math.ceil(this.coords.length / totalPieces * 100) || 0;
     this.scoreEl.textContent = this.score + '%'
     return this.coords.length;
   }

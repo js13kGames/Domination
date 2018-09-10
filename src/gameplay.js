@@ -1,3 +1,5 @@
+import { $ } from './utils';
+
 class Gameplay {
   constructor(board, p1, p2) {
     this.board = board;
@@ -16,6 +18,15 @@ class Gameplay {
     return this.totalTurn <= 2;
   }
 
+  showWinner() {
+    const winner = this.activePlayer.score >= this.inactivePlayer.score ?
+                   this.activePlayer.name : this.inactivePlayer.name;
+
+    if (window.confirm(`Player ${winner} wins!. Start a new game?`)) {
+      window.location.reload();
+    }
+  }
+
   nextTurn(color, selectedPcs) {
 
     this.activePlayer = this.totalTurn % 2 === 1 ? this.p1 : this.p2;
@@ -31,10 +42,16 @@ class Gameplay {
     this.inactivePlayer.setActiveTurn();
     this.totalTurn++;
     this.board.toggleHints(this.isShowHint());
+
+    if (this.activePlayer.score + this.inactivePlayer.score === 100) {
+      return this.showWinner();
+    }
   }
 
   init() {
     this.board.onPieceClick = (e) => {
+      if (e.target.id === 'sq') return this.nextTurn();
+
       const selectedColor = e.target.style.backgroundColor;
       if (selectedColor === this.activePlayer.color || selectedColor === this.inactivePlayer.color) return;
 
@@ -46,6 +63,7 @@ class Gameplay {
 
       this.nextTurn(selectedColor, selectedPcs);
     }
+    $('rst').addEventListener('click', this.showWinner.bind(this));
     this.nextTurn();
   }
 }

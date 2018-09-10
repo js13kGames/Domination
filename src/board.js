@@ -1,14 +1,16 @@
 import { $ } from './utils';
 import Piece from './piece';
 
-const SIZE = 20;
+const SIZE = 5;
 const COLOR = ['LightGreen', 'Salmon', 'LightSkyBlue', 'CadetBlue', 'Khaki'];
-const BOARD_SIZE_PERCENTAGE = 0.65;
+const BOARD_SIZE_PERCENTAGE = 0.6;
 
 class Board {
   constructor() {
     this.gameContainer = $('g');
     this.gameTiles = $('gC');
+    this.info = $('i');
+    this.ctrl = $('ctrl');
     this.pieces = new Piece();
     this.size = SIZE;
     this.onPieceClick = () => {};
@@ -30,7 +32,6 @@ class Board {
   }
 
   connectNeighboringPiece(newColor, coords) {
-    // const currentColor = $(coords[1]).style.backgroundColor;
     let connections = coords;
     coords.forEach(coord => {
       const idx = coord.substr(1).split('_');
@@ -86,7 +87,7 @@ class Board {
     const containerWidth = Math.ceil(smallestViewportDim * BOARD_SIZE_PERCENTAGE);
 
     this.gameContainer.style.margin = `${Math.floor((viewportHeight - containerWidth) / 2)}px auto`;
-    this.setDimension(this.gameContainer, containerWidth, containerWidth);
+    this.setDimension(this.gameContainer, containerWidth, containerWidth + 70);
     this.setDimension(this.gameTiles, containerWidth, containerWidth);
 
     for (let i = 0; i < SIZE; i++) {
@@ -113,6 +114,21 @@ class Board {
       }
     }
 
+    this.ctrl.style.display = 'none';
+    $('sq').addEventListener('click', this.handleClick.bind(this))
+
+    $('h').addEventListener('click', () => {
+      $('modal').style.zIndex = 99;
+      $('modal').style.opacity = 1;
+      this.ctrl.style.display = 'none';
+    })
+
+    $('cl').addEventListener('click', () => {
+      $('modal').style.zIndex = -1;
+      $('modal').style.opacity = 0;
+      this.ctrl.style.removeProperty('display');
+    })
+
     g.style.display = 'block';
 
     return this
@@ -121,6 +137,7 @@ class Board {
   toggleHints(showHint) {
     const els = document.querySelectorAll('.disable-start');
     els.forEach(el => showHint ? el.style.opacity = 0.45 : el.style.removeProperty('opacity'));
+    if (!showHint) this.ctrl.style.removeProperty('display');
   }
 }
 
