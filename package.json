@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf dist/* && parcel build index.html",
+    "build": "rimraf docs/* && parcel build index.html --out-dir docs --no-source-maps",
     "start": "parcel index.html"
   },
   "repository": "git+https://github.com/royyanbach/domination.git",
